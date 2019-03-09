@@ -1,3 +1,4 @@
-.idea
 /venv
+/imgur_downloader/images
+.idea
 *.pyc

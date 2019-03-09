@@ -1,4 +1,16 @@
-import threading
+l = [1, 3, 2]
+
+def foo():
+	l.sort()
+
+import dis
+dis.dis(foo)l = [1, 3, 2]
+
+def foo():
+	l.sort()
+
+import dis
+dis.dis(foo)import threading
 import dis
 import time
 
@@ -18,4 +30,4 @@ def log_elapsed_time(func):
 		elapsed = time.time() - start_time
 		print 'Elapsed time = %d ms' % (elapsed * 1000)
 		return result
-	return _func
+	return _funcabc
