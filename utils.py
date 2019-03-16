@@ -11,11 +11,13 @@ def join_other_threads():
 def disassenble(func):
 	dis.dis(func)
 
-def log_elapsed_time(func):
-	def _func(*args, **kwargs):
-		start_time = time.time()
-		result = func(*args, **kwargs)
-		elapsed = time.time() - start_time
-		print 'Elapsed time = %d ms' % (elapsed * 1000)
-		return result
-	return _func
+def log_elapsed_time():
+	def _log_elapsed_time(func):
+		def _func(*args, **kwargs):
+			start_time = time.time()
+			result = func(*args, **kwargs)
+			elapsed = time.time() - start_time
+			print 'Run %s in %d ms' % (func.__name__, elapsed * 1000)
+			return result
+		return _func
+	return _log_elapsed_time

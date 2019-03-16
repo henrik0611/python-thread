@@ -1,4 +1,4 @@
 /venv
-/imgur_downloader/images
+/img_download/images
 .idea
 *.pyc
