@@ -20,8 +20,10 @@ class MultiplicationWorker(Thread):
 
 def dot_product(a, b):
 	n = len(a)
-	return sum((a[i] * b[i]) for i in xrange(n))
-
+	result = 0
+	for i in range(len(a)):
+		result += a[i] * b[i]
+	return result
 
 @log_elapsed_time()
 def naive_matrix_multiplication(mat_a, mat_b):
