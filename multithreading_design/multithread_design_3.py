@@ -33,11 +33,9 @@ if __name__ == '__main__':
 	task_queue = Queue()
 
 	# Start daemon workers
-	daemon_workers = []
 	for i in xrange(WORKERS):
 		daemon_worker = DaemonWorker(task_queue)
 		daemon_worker.start()
-		daemon_workers.append(daemon_worker)
 
 	# Add tasks
 	for i in xrange(TASKS):
