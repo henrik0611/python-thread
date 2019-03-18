@@ -23,6 +23,7 @@ class DownloadWorker(Thread):
 			finally:
 				self.queue.task_done()
 
+
 def main():
 	ts = time()
 
