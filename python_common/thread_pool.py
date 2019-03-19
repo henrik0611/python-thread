@@ -50,13 +50,3 @@ class ThreadPool(object):
 	def join_and_stop(self):
 		self.join()
 		self.stop()
-
-
-def foo(x):
-	print x
-
-if __name__ == '__main__':
-	thread_pool = ThreadPool(4)
-	thread_pool.add_task(func=foo, args=(1,))
-	thread_pool.add_task(func=foo, args=(2,))
-	thread_pool.join()

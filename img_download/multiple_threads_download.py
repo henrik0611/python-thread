@@ -7,7 +7,7 @@ from time import time
 
 from download import setup_download_dir, get_links, download_link
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s|%(name)s|%(levelname)s|%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(asctime)s|%(levelname)s|%(threadName)s|%(message)s')
 log = logging.getLogger(__name__)
 
 class DownloadWorker(Thread):
@@ -23,8 +23,7 @@ class DownloadWorker(Thread):
 			finally:
 				self.queue.task_done()
 
-
-def main():
+if __name__ == '__main__':
 	ts = time()
 
 	client_id = os.getenv('IMGUR_CLIENT_ID')
@@ -33,19 +32,18 @@ def main():
 
 	download_dir = setup_download_dir()
 	links = get_links(client_id)
-
 	queue = Queue()
+
+	# Start download workers
 	for _ in xrange(8):
 		worker = DownloadWorker(queue)
 		worker.daemon = True
 		worker.start()
 
+	# Add download tasks
 	for link in links:
 		logging.info('Queueing %s', link)
 		queue.put((download_dir, link))
 
 	queue.join()
 	logging.info('Took %s', time() - ts)
-
-if __name__ == '__main__':
-	main()
