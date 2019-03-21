@@ -2,15 +2,6 @@ import threading
 import dis
 import time
 
-def join_other_threads():
-	main_thread = threading.currentThread()
-	for t in threading.enumerate():
-		if t is not main_thread:
-			t.join()
-
-def disassenble(func):
-	dis.dis(func)
-
 def log_elapsed_time():
 	def _log_elapsed_time(func):
 		def _func(*args, **kwargs):

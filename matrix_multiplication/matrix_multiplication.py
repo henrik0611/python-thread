@@ -19,7 +19,6 @@ class MultiplicationWorker(Thread):
 				self.queue.task_done()
 
 def dot_product(a, b):
-	n = len(a)
 	result = 0
 	for i in range(len(a)):
 		result += a[i] * b[i]

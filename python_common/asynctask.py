@@ -12,7 +12,6 @@ def _run_async_task():
 			target(*args, **kwargs)
 		except:
 			print 'run_async_task_exception|target=%s,args=%s,kwargs=%s' % (target.__name__, `args`, `kwargs`)
-			print _Context.runner_thread.name
 
 def run(target, args=(), kwargs=None):
 	if kwargs is None:

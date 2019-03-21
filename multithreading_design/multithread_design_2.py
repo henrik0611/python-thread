@@ -20,7 +20,6 @@ class Worker(Thread):
 				break
 
 	def _process(self, task_name):
-		# do task here
 		logging.info(task_name)
 
 

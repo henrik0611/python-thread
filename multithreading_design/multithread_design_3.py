@@ -24,7 +24,6 @@ class DaemonWorker(Thread):
 				self.task_queue.task_done()
 
 	def _process(self, task_name):
-		# do task here
 		logging.info(task_name)
 
 if __name__ == '__main__':
